@@ -1,4 +1,4 @@
-# Microservice Architecture using SpringBoot
+# Microservice Architecture using SpringBoot 3.0
 Components:- </br>
 API Gateway </br>
 Service Registry </br>
