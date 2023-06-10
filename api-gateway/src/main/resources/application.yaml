@@ -1,0 +1,18 @@
+server:
+  port: 9093
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: commerce-service
+          uri: http://commerce-service
+          predicates:
+            - Path=/commerce/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9091/eureka

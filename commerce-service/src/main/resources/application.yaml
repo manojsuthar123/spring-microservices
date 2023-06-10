@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: commerce-service
+  config:
+    import: "optional:configserver:http://localhost:9092/"
