@@ -8,9 +8,9 @@ spring:
     gateway:
       routes:
         - id: commerce-service
-          uri: http://commerce-service
+          uri: http://localhost:8081/
           predicates:
-            - Path=/commerce/**
+            - Path=/start
 
 eureka:
   client:
