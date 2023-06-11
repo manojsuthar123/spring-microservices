@@ -2,6 +2,7 @@ package com.manoj.commerceservice.controller;
 
 import com.manoj.commerceservice.entity.Product;
 import com.manoj.commerceservice.repository.CommerceRepository;
+import com.manoj.commerceservice.service.CommerceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private CommerceRepository commerceRepository;
+    private CommerceService commerceService;
 
     @GetMapping("/start")
     public ResponseEntity<String> start(){
@@ -25,11 +26,11 @@ public class HomeController {
 
     @GetMapping("/product")
     public List<Product> getProducts(){
-        return commerceRepository.getProductList();
+        return commerceService.getAllProducts();
     }
 
     @PostMapping("/product")
-    public Product getProducts(@RequestBody Product product){
-        return commerceRepository.addProduct(product);
+    public Product addProduct(@RequestBody Product product){
+        return commerceService.addProduct(product);
     }
 }
