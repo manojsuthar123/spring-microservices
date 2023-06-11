@@ -5,3 +5,4 @@ Service Registry </br>
 Config Server </br>
 Commerce (Microservice) </br>
 OpenZipkin (Docker Image) </br>
+Spring AOP </br>
