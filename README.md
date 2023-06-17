@@ -8,4 +8,5 @@ OpenZipkin (Docker Image) </br>
 Spring AOP </br>
 
 ## Architecture Flow
-![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/d46bb1d4-83ef-420d-bb60-7ea816a1276c)
+![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/d00529ba-bfdc-4424-be84-693a2a072cae)
+
