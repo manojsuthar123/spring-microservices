@@ -1,5 +1,5 @@
 # Microservice Architecture using SpringBoot 3.0
-## Components </br>
+## Components 🚀
 API Gateway </br>
 Service Registry </br>
 Config Server </br>
@@ -7,7 +7,13 @@ Commerce (Microservice) </br>
 Spring AOP </br>
 OpenZipkin Server (Distributed Tracing) :whale: </br>
 Prometheus Server (Distributed Metrics) :whale: </br>
+## Upcoming :hourglass:
+Kafka for distributed logs using log4j appender </br>
+Circuit Breaker </br>
+gRPC and Messaging based communication </br>
+and so on...
 
 ## Architecture Flow
-![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/d00529ba-bfdc-4424-be84-693a2a072cae)
+![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/bfebecea-4509-424f-a8be-ddfc65b6f312)
+
 
