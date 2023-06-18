@@ -1,0 +1,2 @@
+1. Create Docker image using `docker build` cmd
+2. Hit http://localhost:59494/ on browser
