@@ -4,6 +4,7 @@ API Gateway </br>
 Service Registry </br>
 Config Server </br>
 Commerce (Microservice) </br>
+Batch Management (Microservice) </br>
 Spring AOP </br>
 OpenZipkin Server (Distributed Tracing) :whale: </br>
 Prometheus Server (Distributed Metrics) :whale: </br>
