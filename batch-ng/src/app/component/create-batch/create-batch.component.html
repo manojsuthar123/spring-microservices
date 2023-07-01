@@ -1,0 +1,92 @@
+<div style="padding: 32px;margin: 32px;width: 600px;">
+    <form #createBatch="ngForm" novalidate (ngSubmit)="onSubmit()">
+
+        {{ batch | json}}
+
+        <div class="form-group">
+            <label for="name">Name </label>
+            <input class="form-control" type="text" id="name" name="name" [(ngModel)]="batch.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="source">Source</label>
+            <select class="form-control" id="source" required [(ngModel)]="batch.dataSource" name="source">  
+                <option *ngFor="let ds of dataSourceEnum | keyvalue" [value]="ds.value">{{ds.value}}</option>
+            </select>
+        </div>
+
+        <ng-container *ngIf="batch.dataSource == dataSourceEnum.DATABASE">
+            <div class="form-group">
+                <label for="dburl">URL </label>
+                <input class="form-control" type="text" id="dburl" name="dburl" [(ngModel)]="batch.dataSourceUrl" required>
+            </div>
+            <div class="form-group">
+                <label for="dbusername">Username </label>
+                <input class="form-control" type="text" id="dbusername" name="dbusername" [(ngModel)]="batch.dataSourceUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="dbpassword">Password </label>
+                <input class="form-control" type="password" id="dbpassword" name="dbpassword" [(ngModel)]="batch.dataSourcePassword" required>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="batch.dataSource == dataSourceEnum.CSV">
+            <div class="form-group">
+                <label for="file">File </label>
+                <input class="form-control" type="file" id="file" name="file" [(ngModel)]="batch.dataSourceFile" required>
+            </div>
+        </ng-container>
+
+        
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <select class="form-control" id="destination" required [(ngModel)]="batch.dataDestination"
+                name="destination">
+                <option *ngFor="let ds of dataSourceEnum | keyvalue" [value]="ds.value">{{ds.value}}</option>
+            </select>
+        </div>
+        <ng-container *ngIf="batch.dataDestination == dataSourceEnum.DATABASE">
+            <div class="form-group">
+                <label for="dbdesturl">URL </label>
+                <input class="form-control" type="text" id="dbdesturl" name="dbdesturl" [(ngModel)]="batch.dataDestUrl" required>
+            </div>
+            <div class="form-group">
+                <label for="dbdestusername">Username </label>
+                <input class="form-control" type="text" id="dbdestusername" name="dbdestusername" [(ngModel)]="batch.dataDestUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="dbdestpassword">Password </label>
+                <input class="form-control" type="password" id="dbdestpassword" name="dbdestpassword" [(ngModel)]="batch.dataDestPassword" required>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="batch.dataDestination == dataSourceEnum.CSV">
+            <div class="form-group">
+                <label for="filedest">File </label>
+                <input class="form-control" type="file" id="filedest" name="filedest" [(ngModel)]="batch.dataDestFile" required>
+            </div>
+        </ng-container>
+
+
+        <div class="form-group">
+            <label for="startat">Starts on </label>
+            <input class="form-control" type="datetime-local" id="startat" name="startat">
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="sendemail" id="sendemail" [value]=true [(ngModel)]="batch.isMail">
+            <label class="form-check-label" for="sendemail">
+                Send me mail after batch completed
+            </label>
+        </div>
+        <ng-container *ngIf="batch.isMail === true">
+            <div class="form-group">
+                <label for="mail">Mail ID </label>
+                <input class="form-control" type="email" id="mail" name="mail" [(ngModel)]="batch.mail" required>
+            </div>
+        </ng-container>
+
+        <div>
+            <button class="btn btn-primary" type="submit" id="submit" name="submit"
+                [disabled]="!createBatch.form.valid">Save</button>
+        </div>
+    </form>
+</div>

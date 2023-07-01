@@ -1,0 +1,4 @@
+<p style="font-size: 24px; padding-left: 32px;padding-top: 32px;">Running: {{runningCount}}/{{batches.length}}</p>
+<div *ngFor="let batch of batches" style="padding-left: 32px;padding-right: 32px;padding-bottom: 16px;">
+  <app-batch-list [batch]="batch"></app-batch-list>
+</div>
