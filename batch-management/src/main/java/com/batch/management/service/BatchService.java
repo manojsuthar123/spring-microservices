@@ -1,6 +1,7 @@
 package com.batch.management.service;
 
 import com.batch.management.model.dto.BatchDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.List;
 

@@ -24,8 +24,8 @@ public class BatchDto {
     private String dataDestUrl;
     private String dataDestUsername;
     private String dataDestPassword;
-    private boolean isRunning;
-    private boolean isMail;
+    private Boolean isRunning;
+    private Boolean isMail;
     private String mail;
     private BatchStatus status;
     private String createdAt;

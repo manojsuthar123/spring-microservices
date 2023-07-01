@@ -2,36 +2,41 @@ package com.batch.management.controller;
 
 import com.batch.management.model.dto.BatchDto;
 import com.batch.management.service.BatchService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class BatchController {
 
+    @Autowired
     private BatchService batchService;
 
     @PostMapping("/batch")
-    public ResponseEntity<BatchDto> createBatch(@RequestBody BatchDto batchDto){
+    public ResponseEntity<BatchDto> createBatch(@RequestBody BatchDto batchDto) {
         return new ResponseEntity<>(batchService.createBatch(batchDto), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/batch/{id}")
+    public ResponseEntity<BatchDto> getBatchById(@PathVariable(value = "id") Integer id){
+        BatchDto batchDto = batchService.getBatch(id);
+        if(batchDto == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(batchDto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/batch/{id}")
+    public ResponseEntity<String> deleteBatch(@PathVariable(value = "id") Integer id){
+        return new ResponseEntity<>(batchService.deleteBatch(id), HttpStatus.OK);
     }
 
     @GetMapping("/batch")
     public ResponseEntity<List<BatchDto>> getAllBatch(){
         return new ResponseEntity<>(batchService.getBatch(), HttpStatus.OK);
-    }
-
-    @GetMapping("/batch/{id}")
-    public ResponseEntity<BatchDto> getBatchById(@RequestParam(name = "id") int id){
-        return new ResponseEntity<>(batchService.getBatch(id), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/batch/{id}")
-    public ResponseEntity<String> deleteBatch(@RequestParam(name = "id") int id){
-        return new ResponseEntity<>(batchService.deleteBatch(id), HttpStatus.OK);
     }
 }

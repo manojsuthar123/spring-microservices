@@ -3,9 +3,17 @@ package com.batch.management.model.entity;
 import com.batch.management.constant.BatchStatus;
 import com.batch.management.constant.DataSource;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "batch")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BatchEntity {
 
     @Id
@@ -26,11 +34,21 @@ public class BatchEntity {
     private String dataDestUrl;
     private String dataDestUsername;
     private String dataDestPassword;
-    private boolean isRunning;
-    private boolean isMail;
+    private Boolean isRunning;
+    private Boolean isMail;
     private String mail;
     @Enumerated(EnumType.STRING)
     private BatchStatus status;
     private String createdAt;
     private String startDateTime;
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = new Date().toString();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        createdAt = new Date().toString();
+    }
 }
