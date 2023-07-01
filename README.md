@@ -5,6 +5,8 @@ Service Registry </br>
 Config Server </br>
 Commerce (Microservice) </br>
 Batch Management (Microservice) </br>
+Spring Batch (Microservice) </br>
+Angular UI (batch-ng) </br>
 Spring AOP </br>
 OpenZipkin Server (Distributed Tracing) :whale: </br>
 Prometheus Server (Distributed Metrics) :whale: </br>
