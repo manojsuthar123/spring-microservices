@@ -44,11 +44,11 @@ public class BatchEntity {
 
     @PrePersist
     public void prePersist() {
-        createdAt = new Date().toString();
+        createdAt = ""+System.currentTimeMillis();
     }
 
     @PreUpdate
     public void preUpdate() {
-        createdAt = new Date().toString();
+        createdAt = ""+System.currentTimeMillis();
     }
 }
