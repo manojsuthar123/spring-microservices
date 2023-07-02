@@ -2,6 +2,8 @@ package com.batch.management.service.impl;
 
 import com.batch.management.mapper.BatchMapper;
 import com.batch.management.model.dto.BatchDto;
+import com.batch.management.model.dto.ResponseCode;
+import com.batch.management.model.dto.ResponseMessage;
 import com.batch.management.model.entity.BatchEntity;
 import com.batch.management.repository.BatchRepository;
 import com.batch.management.service.BatchService;
@@ -41,8 +43,32 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    public String deleteBatch(int batchId) {
+    public ResponseMessage deleteBatch(int batchId) {
         this.batchRepository.deleteById(batchId);
-        return "batch deleted";
+        return new ResponseMessage(ResponseCode.SUCCESS, "deleted");
+    }
+
+    @Override
+    public ResponseMessage startBatch(int batchId) {
+        Optional<BatchEntity> batch = this.batchRepository.findById(batchId);
+        if (batch.isPresent()){
+            BatchEntity batchEntity = batch.get();
+            batchEntity.setIsRunning(true);
+            this.batchRepository.save(batchEntity);
+            return new ResponseMessage(ResponseCode.SUCCESS, "batch started");
+        }
+        return new ResponseMessage(ResponseCode.FAILED, "failed to start batch, please try again later");
+    }
+
+    @Override
+    public ResponseMessage stopBatch(int batchId) {
+        Optional<BatchEntity> batch = this.batchRepository.findById(batchId);
+        if (batch.isPresent()){
+            BatchEntity batchEntity = batch.get();
+            batchEntity.setIsRunning(false);
+            this.batchRepository.save(batchEntity);
+            return new ResponseMessage(ResponseCode.SUCCESS, "batch stopped");
+        }
+        return new ResponseMessage(ResponseCode.FAILED, "failed to stop batch, please try again later");
     }
 }

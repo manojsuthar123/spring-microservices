@@ -1,6 +1,7 @@
 package com.batch.management.controller;
 
 import com.batch.management.model.dto.BatchDto;
+import com.batch.management.model.dto.ResponseMessage;
 import com.batch.management.service.BatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,12 +32,22 @@ public class BatchController {
     }
 
     @DeleteMapping("/batch/{id}")
-    public ResponseEntity<String> deleteBatch(@PathVariable(value = "id") Integer id){
+    public ResponseEntity<ResponseMessage> deleteBatch(@PathVariable(value = "id") Integer id){
         return new ResponseEntity<>(batchService.deleteBatch(id), HttpStatus.OK);
     }
 
     @GetMapping("/batch")
     public ResponseEntity<List<BatchDto>> getAllBatch(){
         return new ResponseEntity<>(batchService.getBatch(), HttpStatus.OK);
+    }
+
+    @GetMapping("/batch/{id}/start")
+    public ResponseEntity<ResponseMessage> startBatch(@PathVariable(value = "id") Integer id){
+        return new ResponseEntity<>(batchService.startBatch(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/batch/{id}/stop")
+    public ResponseEntity<ResponseMessage> stopBatch(@PathVariable(value = "id") Integer id){
+        return new ResponseEntity<>(batchService.stopBatch(id), HttpStatus.OK);
     }
 }
