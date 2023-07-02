@@ -21,6 +21,4 @@ and so on...
 
 
 ## Architecture Flow
-![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/bfebecea-4509-424f-a8be-ddfc65b6f312)
-
-
+![image](https://github.com/manojsuthar123/spring-microservices/assets/39855403/a06375b8-27f0-4e01-81bd-a133e408e3f2)
