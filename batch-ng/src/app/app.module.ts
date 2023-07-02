@@ -16,13 +16,16 @@ import { BatchListComponent } from './component/batch-list/batch-list.component'
 import { CreateBatchComponent } from './component/create-batch/create-batch.component';
 import { AppComponent } from './component/app/app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BatchDetailsComponent } from './component/batch-details/batch-details.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
     AppComponent,
     BatchListComponent,
     CreateBatchComponent,
-    HomeComponent
+    HomeComponent,
+    BatchDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     NgbModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule  ,
+    MatCheckboxModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}

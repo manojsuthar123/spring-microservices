@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm" style="margin: 8px;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{batch.name}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>Status: {{batch.status}}</mat-card-content>
+            <mat-card-content>Created At: {{batch.createdAt | date:'medium' }}</mat-card-content>
+            <mat-card-content>Started At: {{batch.startDateTime | date:'medium' }}</mat-card-content>
+            <ng-container *ngIf="batch.isMail == true">
+                <mat-card-content>Mail: {{batch.mail}}</mat-card-content>
+            </ng-container>
+
+            <mat-card-footer>
+
+            </mat-card-footer>
+            <mat-card-actions>
+                <ng-container *ngIf="batch.isRunning == false">
+                    <button mat-button (click)="startBatch(batch.id)"><i class="bi bi-play"></i> Run</button>
+                </ng-container>
+                <ng-container *ngIf="batch.isRunning == true">
+                    <button mat-button (click)="stopBatch(batch.id)"><i class="bi bi-stop"></i> Stop</button>
+                </ng-container>
+                <button mat-button [routerLink]="[batch.id+'/edit']"><i class="bi bi-pencil"></i> Edit</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div class="col-sm" style="margin: 8px;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title><i class="bi bi-database"></i> Data Source</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>{{batch.dataSource}}</mat-card-content>
+            <ng-container *ngIf="batch.dataSource == dataSourceEnum.DATABASE">
+                <mat-card-content>URL: {{batch.dataSourceUrl}}</mat-card-content>
+                <mat-card-content>Username: {{batch.dataSourceUsername}}</mat-card-content>
+                <mat-card-content>Password: {{batch.dataSourcePassword}}</mat-card-content>
+            </ng-container>
+        </mat-card>
+    </div>
+
+    <div class="col-sm" style="margin: 8px;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title><i class="bi bi-database"></i> Data Destination</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>{{batch.dataDestination}}</mat-card-content>
+            <ng-container *ngIf="batch.dataDestination == dataSourceEnum.DATABASE">
+                <mat-card-content>URL: {{batch.dataDestUrl}}</mat-card-content>
+                <mat-card-content>Username: {{batch.dataDestUsername}}</mat-card-content>
+                <mat-card-content>Password: {{batch.dataDestPassword}}</mat-card-content>
+            </ng-container>
+        </mat-card>
+    </div>
+</div>
+<div style="margin: 8px;">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title><i class="bi bi-hdd"></i> Console</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>Logs > </mat-card-content>
+    </mat-card>
+</div>

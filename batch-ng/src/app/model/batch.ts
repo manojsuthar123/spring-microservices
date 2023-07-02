@@ -25,7 +25,7 @@ export class Batch {
     public isMail: boolean = false,
     public mail: string = '',
     public status: Status = Status.INITIALIZE,
-    public createdAt: string = new Date().toString(),
-    public startDateTime: string = new Date().toString()
+    public createdAt: string = '',
+    public startDateTime: string = ''
   ) {}
 }

@@ -1,4 +1,24 @@
-<p style="font-size: 24px; padding-left: 32px;padding-top: 32px;">Running: {{runningCount}}/{{batches.length}}</p>
-<div *ngFor="let batch of batches" style="padding-left: 32px;padding-right: 32px;padding-bottom: 16px;">
-  <app-batch-list [batch]="batch"></app-batch-list>
+<div *ngIf="!isError;then content else failed_content"></div>
+
+<div *ngIf="isLoading">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="spinner-border" role="status">
+    </div>
+  </div>
 </div>
+
+<ng-template #content>
+  <p style="font-size: 24px; padding-left: 32px;padding-top: 32px;">Running: {{runningCount}}/{{batches.length}}</p>
+  <p *ngIf="batches.length==0" style="font-size: 24px; padding-left: 32px;padding-top: 32px;">No batch created</p>
+  <div *ngFor="let batch of batches" style="padding-left: 32px;padding-right: 32px;padding-bottom: 16px;">
+    <app-batch-list [batch]="batch"></app-batch-list> 
+  </div>
+</ng-template>
+
+<ng-template #failed_content>
+   <div class="h-100 d-flex align-items-center justify-content-center">
+      <h4>
+        Failed to load, please try again later!
+      </h4>
+   </div>
+</ng-template>

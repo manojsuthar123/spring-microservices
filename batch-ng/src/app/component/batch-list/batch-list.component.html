@@ -8,10 +8,15 @@
             <mat-card-content>Created At: {{batch.createdAt | date:'medium' }}</mat-card-content>
         </mat-card-footer>
         <mat-card-actions>
-            <button mat-button>Run</button>
-            <button mat-button>View</button>
-            <button mat-button [routerLink]="[batch.id+'/edit']">Edit</button>
-            <button mat-button (click)="deleteBatch(batch.id)">Delete</button>
+            <ng-container *ngIf="batch.isRunning == false">
+                <button mat-button (click)="startBatch(batch.id)"><i class="bi bi-play"></i> Run</button>
+            </ng-container>
+            <ng-container *ngIf="batch.isRunning == true">
+                <button mat-button (click)="stopBatch(batch.id)"><i class="bi bi-stop"></i> Stop</button>
+            </ng-container>
+            <button mat-button [routerLink]="[batch.id+'/view']"><i class="bi bi-eye"></i> View</button>
+            <button mat-button [routerLink]="[batch.id+'/edit']"><i class="bi bi-pencil"></i> Edit</button>
+            <button mat-button (click)="deleteBatch(batch.id)"><i class="bi bi-trash3"></i> Delete</button>
           </mat-card-actions>
     </mat-card>
 </div>
